@@ -1,6 +1,8 @@
 import com.google.gson.Gson;
 import org.junit.Before;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import util.DateUtil;
 
 import java.util.Date;
@@ -12,12 +14,12 @@ import java.util.Map;
  * @date 2018/3/1 0:02
  */
 public class test01 {
-
-    Gson gson;
+    private static final Logger logger=LoggerFactory.getLogger(test01.class);
+    Gson gson=new Gson();
 
     @Before
     public void before(){
-        gson=new Gson();
+
     }
 
     @Test
@@ -25,6 +27,7 @@ public class test01 {
         Map<String,Object> map=new HashMap<String,Object>();
         map.put("1","123");
         System.out.println(gson.toJson(map));
+        logger.info(gson.toJson(map));
     }
     @Test
     public void test02(){

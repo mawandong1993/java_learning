@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="60">
+
+    <properties>
+        <property name="projectName">java_learning</property>
+        <property name="logPath">/var/${projectName}/logs</property>
+    </properties>
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:SSS} [%t] %-5p %c{1}:%L - %msg%n"/>
+        </Console>
+
+        <RollingFile name="root" filename="${logPath}/root.log"
+                     filepattern="${logPath}/%d{yyyyMMdd}-%i-root.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss,SSS} [%t] %-5p %c{1}:%L - %msg%n"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="100"/>
+        </RollingFile>
+
+        <RollingFile name="root-error" filename="${logPath}/root-error.log"
+                     filepattern="${logPath}/%d{yyyyMMdd}-%i-root-error.log">
+            <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss,SSS} [%t] %-5p %c{1}:%L - %msg%n"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="100"/>
+        </RollingFile>
+
+        <RollingFile name="sql" filename="${logPath}/sql.log"
+                     filepattern="${logPath}/%d{yyyyMMdd}-%i-sql.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss,SSS} [%t] %-5p %c{1}:%L - %msg%n"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="100"/>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <!-- 去掉无用的日志 -->
+        <Logger name="org.apache.commons.httpclient.HttpConnection" level="info" additivity="true">
+        </Logger>
+        <Logger name="org.apache.commons.httpclient.HttpMethodDirector" level="info" additivity="true">
+        </Logger>
+
+        <Logger name="java.sql.Connection" level="info" additivity="true">
+            <AppenderRef ref="sql"/>
+        </Logger>
+
+        <Logger name="java.sql.PreparedStatement" level="info" additivity="true">
+            <AppenderRef ref="sql"/>
+        </Logger>
+
+        <Logger name="java.sql.ResultSet" level="info" additivity="true">
+            <AppenderRef ref="sql"/>
+        </Logger>
+
+        <Logger name="org.springframework.jdbc.datasource.DataSourceTransactionManager" level="info" additivity="true">
+            <AppenderRef ref="sql"/>
+        </Logger>
+
+        <Logger name="org.springframework.transaction.jta.WebSphereUowTransactionManager" level="info"
+                additivity="false">
+            <AppenderRef ref="sql"/>
+        </Logger>
+
+        <Logger name="java.sql.Statement" level="info" additivity="true">
+            <AppenderRef ref="sql"/>
+        </Logger>
+
+        <Logger name="org.apache.ibatis" level="info" additivity="true">
+            <AppenderRef ref="sql"/>
+        </Logger>
+
+        <Logger name="org.mybatis.spring" level="info" additivity="true">
+            <AppenderRef ref="sql"/>
+        </Logger>
+
+        <Logger name="org.springframework" level="info" additivity="true">
+        </Logger>
+
+        <Logger name="org.apache.commons" level="info" additivity="true">
+        </Logger>
+
+        <Logger name="org.apache.velocity" level="info" additivity="true">
+        </Logger>
+
+        <Logger name="org.apache.cxf.configuration.spring" level="info" additivity="true">
+        </Logger>
+
+        <Logger name="com.opensymphony.xwork2" level="info" additivity="true">
+        </Logger>
+
+        <Logger name="net.sf.ehcache" level="info" additivity="true">
+        </Logger>
+
+        <Logger name="org.apache.cxf" level="info" additivity="true">
+        </Logger>
+        <Logger name="httpclient.wire" level="info" additivity="true">
+        </Logger>
+        <Logger name="org.apache.http" level="info" additivity="true">
+        </Logger>
+        <Logger name="com.amazonaws" level="info" additivity="true">
+        </Logger>
+
+        <!-- 上线时，应该将各个info改为info以上级别，并去除console的Appender -->
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="root"/>
+            <AppenderRef ref="root-error"/>
+        </Root>
+    </Loggers>
+</Configuration>
