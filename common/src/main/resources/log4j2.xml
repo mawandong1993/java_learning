@@ -4,16 +4,17 @@
     <properties>
         <property name="projectName">java_learning</property>
         <property name="logPath">/var/${projectName}/logs</property>
+        <property name="pattern">%highlight{%d{yyyy-MM-dd HH:mm:ss,SSS} [%t] [%-5p] [%l] - %msg%n}</property>
     </properties>
 
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:SSS} [%t] %-5p %c{1}:%L - %msg%n"/>
+            <PatternLayout pattern="${pattern}"/>
         </Console>
 
         <RollingFile name="root" filename="${logPath}/root.log"
                      filepattern="${logPath}/%d{yyyyMMdd}-%i-root.log">
-            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss,SSS} [%t] %-5p %c{1}:%L - %msg%n"/>
+            <PatternLayout pattern="${pattern}"/>
             <Policies>
                 <SizeBasedTriggeringPolicy size="100 MB"/>
             </Policies>
@@ -23,7 +24,7 @@
         <RollingFile name="root-error" filename="${logPath}/root-error.log"
                      filepattern="${logPath}/%d{yyyyMMdd}-%i-root-error.log">
             <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
-            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss,SSS} [%t] %-5p %c{1}:%L - %msg%n"/>
+            <PatternLayout pattern="${pattern}"/>
             <Policies>
                 <SizeBasedTriggeringPolicy size="100 MB"/>
             </Policies>
@@ -32,7 +33,7 @@
 
         <RollingFile name="sql" filename="${logPath}/sql.log"
                      filepattern="${logPath}/%d{yyyyMMdd}-%i-sql.log">
-            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss,SSS} [%t] %-5p %c{1}:%L - %msg%n"/>
+            <PatternLayout pattern="${pattern}"/>
             <Policies>
                 <SizeBasedTriggeringPolicy size="100 MB"/>
             </Policies>
