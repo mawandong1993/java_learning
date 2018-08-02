@@ -1,3 +1,5 @@
+package test;
+
 import com.google.gson.Gson;
 import org.junit.Before;
 import org.junit.Test;
@@ -5,9 +7,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import util.DateUtil;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * @author mawandong
@@ -34,5 +35,27 @@ public class test01 {
         Date date = new Date();
         String date01= DateUtil.format(date);
         System.out.println(date01);
+        logger.info(gson.toJson(date));
+    }
+    @Test
+    public void test03(){
+        logger.trace(gson.toJson(this.random()));
+        logger.debug(gson.toJson(this.random()));
+        logger.info(gson.toJson(this.random()));
+        logger.warn(gson.toJson(this.random()));
+        logger.error(gson.toJson(this.random()));
+    }
+
+
+    public List<Integer> random(){
+
+        List<Integer> list = new ArrayList<>();
+
+        for(int i=0;i<100;i++){
+           Integer a= ThreadLocalRandom.current().nextInt(0,100);
+           list.add(a);
+        }
+        return list;
+
     }
 }

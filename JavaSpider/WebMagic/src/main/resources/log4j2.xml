@@ -2,7 +2,7 @@
 <Configuration status="WARN" monitorInterval="60">
 
     <properties>
-        <property name="projectName">common</property>
+        <property name="projectName">WebMagic</property>
         <property name="logPath">/var/logs/${projectName}</property>
         <property name="pattern">%highlight{%d [${projectName}] [%t] [%-5p] [%l] - %msg%n}</property>
     </properties>
