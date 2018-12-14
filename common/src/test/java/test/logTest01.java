@@ -14,8 +14,8 @@ import java.util.concurrent.ThreadLocalRandom;
  * @author mawandong
  * @date 2018/3/1 0:02
  */
-public class test01 {
-    private static final Logger logger=LoggerFactory.getLogger(test01.class);
+public class logTest01 {
+    private static final Logger logger=LoggerFactory.getLogger(logTest01.class);
     Gson gson=new Gson();
 
     @Before
