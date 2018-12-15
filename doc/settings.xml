@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+	<!-- 默认的值是${user.home}/.m2/repository -->
+    <!-- <localRepository>D:/Program/.m2/repository</localRepository> -->
+	<localRepository>E:\project\repository</localRepository>
+    <!-- 如果Maven要试图与用户交互来得到输入就设置为true，否则就设置为false，默认为true。 -->
+    <interactiveMode>true</interactiveMode>
+
+    <!-- 如果Maven使用${user.home}/.m2/plugin-registry.xml来管理plugin的版本，就设置为true，默认为false。 -->
+    <usePluginRegistry>false</usePluginRegistry>
+
+    <!-- 如果构建系统要在离线模式下工作，设置为true，默认为false。 如果构建服务器因为网络故障或者安全问题不能与远程仓库相连，那么这个设置是非常有用的。 -->
+    <offline>false</offline>
+	
+	<mirrors>
+		<!-- 阿里云 Maven 镜像服务器配置 -->
+		<mirror>
+			<id>aliyun_maven_public</id>
+			<name>aliyun maven</name>
+			<url>https://maven.aliyun.com/repository/public</url>
+			<mirrorOf>central</mirrorOf>
+		</mirror>
+		<mirror>
+			<id>aliyun_maven_central</id>
+			<name>aliyun maven</name>
+			<url>https://maven.aliyun.com/repository/central</url>
+			<mirrorOf>central</mirrorOf>
+		</mirror>
+		
+		<mirror>
+			<id>central</id>
+			<name>Central Repository</name>
+			<url>http://central.maven.org/maven2/</url>
+			<mirrorOf>central</mirrorOf>
+		</mirror>
+		<mirror>
+			<id>repo</id>
+			<name>Central Repository</name>
+			<url>https://repo.maven.apache.org/maven2</url>
+			<mirrorOf>central</mirrorOf>
+		</mirror>
+		<mirror>
+			<id>repo1</id>
+			<name>Maven Repository Switchboard</name>
+			<url>http://repo1.maven.org/maven2/</url>
+			<mirrorOf>central</mirrorOf>
+		</mirror>
+		<mirror>
+			<id>repo2</id>
+			<mirrorOf>central</mirrorOf>
+			<name>Human Readable Name for this Mirror.</name>
+			<url>http://repo2.maven.org/maven2/</url>
+		</mirror>
+		<!-- ibiblio Maven 镜像服务器配置 -->
+		<mirror>
+			<id>ibiblio</id>
+			<mirrorOf>central</mirrorOf>
+			<name>Human Readable Name for this Mirror.</name>
+			<url>http://maven.ibiblio.org/maven2/</url>
+		</mirror>
+		
+		<mirror>
+			<id>jboss-public-repository-group</id>
+			<mirrorOf>central</mirrorOf>
+			<name>JBoss Public Repository Group</name>
+			<url>http://repository.jboss.org/nexus/content/groups/public</url>
+		</mirror>
+		
+	</mirrors>
+	
+	<profiles>
+		<id>jdk-1.8</id>    
+		<activation>    
+          <activeByDefault>true</activeByDefault>    
+          <jdk>1.8</jdk>    
+		</activation>    
+		<properties>    
+			<maven.compiler.source>1.8</maven.compiler.source>    
+			<maven.compiler.target>1.8</maven.compiler.target>    
+			<maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>    
+		</properties>    
+	</profiles>
+	
+	<activeProfiles>
+	</activeProfiles>
+
+
+
+</settings>
