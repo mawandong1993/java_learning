@@ -53,4 +53,26 @@ public class test02 {
 
     }
 
+
+    @Test
+    public void test04(){
+        Map<String,Object> map=new HashMap<String,Object>();
+        Map<String,Object> map1=new HashMap<String,Object>();
+        Map<String,Object> map2=new HashMap<String,Object>();
+        Map<String,Object> map3=new HashMap<String,Object>();
+        Map<String,Object> map4=new HashMap<String,Object>();
+        Map<String,Object> map5=new HashMap<String,Object>();
+        Map<String,Object> map6=new HashMap<String,Object>();
+
+        map4.put("xxx", "xx");
+
+
+        log.trace(gson.toJson(this.random()));
+        log.debug(gson.toJson(this.random()));
+        log.info(gson.toJson(this.random()));
+        log.warn(gson.toJson(this.random()));
+        log.error(gson.toJson(this.random()));
+    }
+
+
 }
