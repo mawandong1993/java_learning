@@ -41,6 +41,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 
@@ -295,17 +296,17 @@
             <dependency>
                 <groupId>xin.xihc</groupId>
                 <artifactId>CommonUtils</artifactId>
-                <version>1.19.1</version>
+                <version>1.19.7</version>
             </dependency>
             <dependency>
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
-                <version>4.5.1</version>
+                <version>4.5.18</version>
             </dependency>
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
-                <version>1.18.4</version>
+                <version>1.18.8</version>
                 <scope>provided</scope>
             </dependency>
 
