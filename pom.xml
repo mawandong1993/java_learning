@@ -47,7 +47,6 @@
 
     <dependencyManagement>
         <dependencies>
-
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
@@ -58,7 +57,6 @@
                 <artifactId>log4j-slf4j-impl</artifactId>
                 <version>2.12.0</version>
             </dependency>
-
 
             <dependency>
                 <groupId>junit</groupId>
@@ -92,6 +90,11 @@
                 <groupId>org.xhtmlrenderer</groupId>
                 <artifactId>flying-saucer-pdf-itext5</artifactId>
                 <version>9.1.18</version>
+            </dependency>
+            <dependency>
+                <groupId>org.seleniumhq.selenium</groupId>
+                <artifactId>selenium-java</artifactId>
+                <version>3.141.59</version>
             </dependency>
 
             <dependency>
@@ -172,32 +175,6 @@
             </dependency>
 
             <dependency>
-                <groupId>commons-dbcp</groupId>
-                <artifactId>commons-dbcp</artifactId>
-                <version>1.4</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.commons</groupId>
-                <artifactId>commons-dbcp2</artifactId>
-                <version>2.7.0</version>
-            </dependency>
-            <dependency>
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-core</artifactId>
-                <version>5.4.4.Final</version>
-            </dependency>
-            <dependency>
-                <groupId>org.mybatis</groupId>
-                <artifactId>mybatis</artifactId>
-                <version>3.5.2</version>
-            </dependency>
-            <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
-                <version>8.0.17</version>
-            </dependency>
-
-            <dependency>
                 <groupId>org.apache.poi</groupId>
                 <artifactId>poi</artifactId>
                 <version>4.1.0</version>
@@ -216,12 +193,6 @@
                 <groupId>org.apache.poi</groupId>
                 <artifactId>ooxml-schemas</artifactId>
                 <version>1.4</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.seleniumhq.selenium</groupId>
-                <artifactId>selenium-java</artifactId>
-                <version>3.141.59</version>
             </dependency>
 
             <!--json-->
@@ -258,63 +229,6 @@
             </dependency>
 
             <dependency>
-                <groupId>org.codehaus.jettison</groupId>
-                <artifactId>jettison</artifactId>
-                <version>1.4.0</version>
-            </dependency>
-            <dependency>
-                <groupId>net.pwall.util</groupId>
-                <artifactId>jsonutil</artifactId>
-                <version>1.6</version>
-            </dependency>
-            <dependency>
-                <groupId>javax.json</groupId>
-                <artifactId>javax.json-api</artifactId>
-                <version>1.1.4</version>
-            </dependency>
-            <dependency>
-                <groupId>org.glassfish</groupId>
-                <artifactId>javax.json</artifactId>
-                <version>1.1.4</version>
-            </dependency>
-            <dependency>
-                <groupId>com.github.cliftonlabs</groupId>
-                <artifactId>json-simple</artifactId>
-                <version>3.0.2</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.johnzon</groupId>
-                <artifactId>johnzon-core</artifactId>
-                <version>1.1.10</version>
-            </dependency>
-            <dependency>
-                <groupId>org.sharegov</groupId>
-                <artifactId>mjson</artifactId>
-                <version>1.4.1</version>
-            </dependency>
-            <dependency>
-                <groupId>com.cedarsoftware</groupId>
-                <artifactId>json-io</artifactId>
-                <version>4.10.1</version>
-            </dependency>
-            <dependency>
-                <groupId>net.minidev</groupId>
-                <artifactId>json-smart</artifactId>
-                <version>2.3</version>
-            </dependency>
-            <dependency>
-                <groupId>org.yuanheng.cookjson</groupId>
-                <artifactId>cookjson-jsonpath</artifactId>
-                <version>1.0.2</version>
-            </dependency>
-            <dependency>
-                <groupId>me.joshlarson</groupId>
-                <artifactId>fast-json</artifactId>
-                <version>1.7</version>
-            </dependency>
-
-
-            <dependency>
                 <groupId>xin.xihc</groupId>
                 <artifactId>CommonUtils</artifactId>
                 <version>1.19.7</version>
@@ -330,7 +244,6 @@
                 <version>1.18.8</version>
                 <scope>provided</scope>
             </dependency>
-
 
             <!--spider-->
             <dependency>
@@ -350,7 +263,6 @@
                 <version>1.0-SNAPSHOT</version>
             </dependency>
 
-
         </dependencies>
     </dependencyManagement>
 
@@ -361,9 +273,9 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                    <encoding>UTF-8</encoding>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
         </plugins>
