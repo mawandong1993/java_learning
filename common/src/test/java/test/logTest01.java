@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import util.DateUtil;
+import util.DateUtils;
 
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
@@ -33,7 +33,7 @@ public class logTest01 {
     @Test
     public void test02(){
         Date date = new Date();
-        String date01= DateUtil.format(date);
+        String date01= DateUtils.format(date);
         System.out.println(date01);
         logger.info(gson.toJson(date));
     }
