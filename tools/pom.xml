@@ -12,7 +12,6 @@
     <artifactId>tools</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>json_tools</module>
         <module>java_study</module>
     </modules>
 
