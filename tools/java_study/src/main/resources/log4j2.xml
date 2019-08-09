@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="60">
+
+    <properties>
+        <property name="projectName">java_study</property>
+        <property name="logPath">/var/logs/${projectName}</property>
+        <property name="pattern">%highlight{%d [${projectName}] [%t] [%-5p] [%l] - %msg%n}</property>
+    </properties>
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${pattern}"/>
+        </Console>
+
+        <RollingFile name="root" filename="${logPath}/root.log" filepattern="${logPath}/root-%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern="${pattern}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+                <!--<SizeBasedTriggeringPolicy size="250MB"/>-->
+            </Policies>
+            <DefaultRolloverStrategy>
+                <Delete basePath="${logPath}" maxDepth="1">
+                    <IfFileName glob="root-*.log"/>
+                    <IfLastModified age="90d"/>
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
+
+        <RollingFile name="error" filename="${logPath}/error.log" filepattern="${logPath}/error-%d{yyyy-MM-dd}.log">
+            <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="${pattern}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+                <!--<SizeBasedTriggeringPolicy size="250MB"/>-->
+            </Policies>
+            <DefaultRolloverStrategy>
+                <Delete basePath="${logPath}" maxDepth="1">
+                    <IfFileName glob="error-*.log"/>
+                    <IfLastModified age="90d"/>
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
+
+        <RollingFile name="sql" filename="${logPath}/sql.log" filepattern="${logPath}/sql-%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern="${pattern}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+                <!--<SizeBasedTriggeringPolicy size="250MB"/>-->
+            </Policies>
+            <DefaultRolloverStrategy>
+                <Delete basePath="${logPath}" maxDepth="1">
+                    <IfFileName glob="sql-*.log"/>
+                    <IfLastModified age="90d"/>
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
+
+    </Appenders>
+
+    <Loggers>
+        <!-- 去掉无用的日志 -->
+        <Logger name="org.apache.commons.httpclient.HttpConnection" level="info" additivity="true">
+        </Logger>
+        <Logger name="org.apache.commons.httpclient.HttpMethodDirector" level="info" additivity="true">
+        </Logger>
+
+        <Logger name="java.sql.Connection" level="info" additivity="true">
+            <AppenderRef ref="sql"/>
+        </Logger>
+
+        <Logger name="java.sql.PreparedStatement" level="info" additivity="true">
+            <AppenderRef ref="sql"/>
+        </Logger>
+
+        <Logger name="java.sql.ResultSet" level="info" additivity="true">
+            <AppenderRef ref="sql"/>
+        </Logger>
+
+        <Logger name="org.springframework.jdbc.datasource.DataSourceTransactionManager" level="info" additivity="true">
+            <AppenderRef ref="sql"/>
+        </Logger>
+
+        <Logger name="org.springframework.transaction.jta.WebSphereUowTransactionManager" level="info"
+                additivity="false">
+            <AppenderRef ref="sql"/>
+        </Logger>
+
+        <Logger name="java.sql.Statement" level="info" additivity="true">
+            <AppenderRef ref="sql"/>
+        </Logger>
+
+        <Logger name="org.apache.ibatis" level="info" additivity="true">
+            <AppenderRef ref="sql"/>
+        </Logger>
+
+        <Logger name="org.mybatis.spring" level="info" additivity="true">
+            <AppenderRef ref="sql"/>
+        </Logger>
+
+        <Logger name="org.springframework" level="info" additivity="true">
+        </Logger>
+
+        <Logger name="org.apache.commons" level="info" additivity="true">
+        </Logger>
+
+        <Logger name="org.apache.velocity" level="info" additivity="true">
+        </Logger>
+
+        <Logger name="org.apache.cxf.configuration.spring" level="info" additivity="true">
+        </Logger>
+
+        <Logger name="com.opensymphony.xwork2" level="info" additivity="true">
+        </Logger>
+
+        <Logger name="net.sf.ehcache" level="info" additivity="true">
+        </Logger>
+
+        <Logger name="org.apache.cxf" level="info" additivity="true">
+        </Logger>
+        <Logger name="httpclient.wire" level="info" additivity="true">
+        </Logger>
+        <Logger name="org.apache.http" level="info" additivity="true">
+        </Logger>
+        <Logger name="com.amazonaws" level="info" additivity="true">
+        </Logger>
+
+        <Logger name="com.learning" level="debug" additivity="true">
+        </Logger>
+
+        <!-- 上线时，应该将各个info改为info以上级别，并去除console的Appender -->
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="root"/>
+            <AppenderRef ref="error"/>
+        </Root>
+    </Loggers>
+</Configuration>
