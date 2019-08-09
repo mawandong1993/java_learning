@@ -13,7 +13,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>json_tools</module>
-        <module>http_utils</module>
         <module>java_study</module>
     </modules>
 

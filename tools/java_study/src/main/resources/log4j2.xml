@@ -4,7 +4,7 @@
     <properties>
         <property name="projectName">java_study</property>
         <property name="logPath">/var/logs/${projectName}</property>
-        <property name="pattern">%highlight{%d [${projectName}] [%t] [%-5p] [%l] - %msg%n}</property>
+        <property name="pattern">%highlight{%d [${projectName}] [%t] [%-5p] [%c:%L] - %msg%n}</property>
     </properties>
 
     <Appenders>
